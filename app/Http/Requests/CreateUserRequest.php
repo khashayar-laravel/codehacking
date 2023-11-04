@@ -27,6 +27,7 @@ class CreateUserRequest extends Request
 //			"username"=>"required",
 //			"email"=>"required",
 //			"password"=>"required"
+//            "photo_id"=>"required"
         ];
     }
 }

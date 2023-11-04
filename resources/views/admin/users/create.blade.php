@@ -25,8 +25,8 @@
         </div>
 
         <div class="form-group">
-            {!! Form::label("file","Upload file:") !!}
-            {!! Form::file("file",["class"=>"form-control"]) !!}
+            {!! Form::label("photo_id","Upload file:") !!}
+            {!! Form::file("photo_id",null,["class"=>"form-control"]) !!}
         </div>
 
         <div class="form-group">
@@ -34,9 +34,14 @@
             {!! Form::password("password",["class"=>"form-control"]) !!}
         </div>
         <div class="form-group">
+            <input type="hidden" name="testname" value=<?php echo ("1"+"2"); ?>>
             {!! Form::submit("submit",["class"=>"btn btn-primary"]) !!}
         </div>
     {!! Form::close() !!}
+
+    <?php
+
+    ?>
 
     @include("includes.error")
 @stop
