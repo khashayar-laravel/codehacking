@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePhotosTable extends Migration
+class ComeBackIdToUser2 extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,8 @@ class CreatePhotosTable extends Migration
      */
     public function up()
     {
+        Schema::table('users', function (Blueprint $table) {
 
-        Schema::create('photos', function (Blueprint $table) {
-            $table->increments('id')->unique();
-            $table->string('file');
-            $table->timestamps();
         });
     }
 
@@ -27,6 +24,8 @@ class CreatePhotosTable extends Migration
      */
     public function down()
     {
-        Schema::drop('photos');
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
     }
 }

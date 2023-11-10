@@ -25,10 +25,17 @@
             color: white;
         }
     </style>
-    <?php
-//        $users = App\User::all();
-//    dd($users);
-    ?>
+    @if(Session::has("deleted_user"))
+        {{session("deleted_user")}}
+        @endif
+    @if(Session::has("created_user"))
+        {{session("created_user")}}
+    @endif
+
+    @if(Session::has("updated_user"))
+        {{session("updated_user")}}
+    @endif
+
     @if($users)
 
         <h1>A Fancy Table</h1>
@@ -54,7 +61,7 @@
                 <tr>
                     <td>{{$user->id}}</td>
                     <td><a href="{{route("admin.users.edit",$user->id)}}">{{$user->name ? $user->name : "-"}}</a></td>
-                    <td><a href="{{route("admin.users.edit",$user->id)}}"><img width="50px" src='{{$user->photo->file!='/images/Default.jpg'?$user->photo->file:"/defaultimage/pishfarz.jpg"}}'></a></td>
+                    <td><a href="{{route("admin.users.edit",$user->id)}}"><img width="50px" src='{{$user->photo?$user->photo->file:"/defaultimage/pishfarz.jpg"}}'></a></td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->role ? $user->role->name : "HasNoRole"}}</td>
                     <td>{{$user->is_active == 1 ? "Active" : "NotActive"}}</td>
@@ -68,35 +75,7 @@
 
             @endif
 
-            @if($photos)
-                <?php
-//                    var_dump($photos);
-                    ?>
-                <h1></h1>
-                <table id="customers">
-                    <tr>
 
-                        <th> Image </th>
-
-
-                    </tr>
-
-                    @foreach($photos as $photo)
-
-
-                        <tr>
-
-
-                        <td><a href="{{route("admin.users.edit",$photo->id)}}"><img width="50px" src='{{$photo->file!='/images/Default.jpg'?$photo->file:"/defaultimage/pishfarz.jpg"}}'></a></td>
-
-
-                        </tr>
-
-                    @endforeach
-
-                    @endif
-
-        </table>
 
 
 
